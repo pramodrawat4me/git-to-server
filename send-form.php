@@ -15,7 +15,7 @@ $phone = htmlspecialchars($input['phone'] ?? '');
 $subject = htmlspecialchars($input['subject'] ?? 'Contact Form');
 $message = htmlspecialchars($input['message'] ?? '');
 
-$to = "pramodrawat4me@gmail.com";  // 👈 your email
+$to = "contact@codeveal.com";  // 👈 your email
 $body = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message\n";
 $headers = "From: $name <$email>\r\nReply-To: $email\r\n";
 
