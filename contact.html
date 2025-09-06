@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Us</title>
+  <style>
+    /* --- Reset & base --- */
+    *{box-sizing:border-box}body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.4;margin:0;background:#f4f7fb;color:#0f1724;padding:32px;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    a{color:inherit}
+    /* --- Card --- */
+    .card{width:100%;max-width:920px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(16,24,40,0.08);display:grid;grid-template-columns:1fr 420px;overflow:hidden}
+    @media (max-width:880px){.card{grid-template-columns:1fr;}}
+    .left{padding:34px 36px}
+    .right{background:linear-gradient(180deg,#0ea5a4 0%, #06b6d4 100%);color:#fff;padding:36px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+    .logo{font-weight:700;letter-spacing:0.2px}
+    .lead{color:#0f1724;opacity:0.8;margin:8px 0 22px;font-size:0.98rem}
+    .title{font-size:1.28rem;font-weight:600;margin:0}
+    .subtitle{opacity:0.85;margin:0 0 12px}
+    /* --- Form --- */
+    form{display:grid;gap:12px}
+    .row{display:flex;gap:12px}
+    .row .field{flex:1}
+    .field{display:flex;flex-direction:column}
+    label{font-size:0.82rem;margin-bottom:6px;color:#374151}
+    input[type="text"],input[type="email"],input[type="tel"],textarea,select{
+      padding:12px 14px;border-radius:8px;border:1px solid #e6e9ef;font-size:0.95rem;outline:none;background:#fff;transition:box-shadow .15s, border-color .15s
+    }
+    input:focus,textarea:focus,select:focus{box-shadow:0 0 0 4px rgba(34,197,94,0.07);border-color:#22c55e}
+    textarea{min-height:120px;resize:vertical}
+    .small{font-size:0.85rem;color:#6b7280}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:10px;border:0;font-weight:600;background:#06b6d4;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(6,182,212,0.18)
+    }
+    .btn:disabled{opacity:0.6;cursor:not-allowed}
+    .muted{color:#6b7280;font-size:0.9rem}
+    .note{font-size:0.85rem;color:#6b7280;margin-top:6px}
+    /* --- Right side --- */
+    .contact-info{background:transparent;padding:24px;border-radius:10px}
+    .contact-info h3{margin:0 0 6px;font-size:1.05rem}
+    .contact-row{display:flex;gap:10px;align-items:center;margin:12px 0}
+    .icon{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,0.12);display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+    /* --- Messages --- */
+    .form-message{padding:12px;border-radius:8px;border:1px solid transparent;font-weight:600}
+    .success{background:#ecfdf5;border-color:#bbf7d0;color:#065f46}
+    .error{background:#fff1f2;border-color:#fecaca;color:#7f1d1d}
+    /* --- small tweaks --- */
+    .actions{display:flex;gap:10px;align-items:center;margin-top:6px}
+  </style>
+</head>
+<body>
+  <main class="card" aria-labelledby="contact-title">
+    <section class="left">
+      <div class="logo">Your Brand</div>
+      <h1 id="contact-title" class="title">Get in touch</h1>
+      <p class="lead">Have a question or want to work together? Send a message — we’ll reply within 24 hours.</p>
+
+      <!-- Form -->
+      <form id="contactForm" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required minlength="2" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="hello@example.com" required />
+        </div>
+
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="Brief subject" required />
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us more..." required minlength="6"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="submitBtn" class="btn">Send message</button>
+          <div id="status" class="muted" aria-live="polite"></div>
+        </div>
+
+        <div id="formMessage" role="status" style="margin-top:12px;display:none;"></div>
+
+        <p class="note">By sending this message you agree to our <a href="#" target="_blank" rel="noopener">terms</a>.</p>
+      </form>
+    </section>
+
+    <aside class="right" aria-hidden="false">
+      <div class="contact-info">
+        <h3 class="subtitle">Contact details</h3>
+        <div class="contact-row"><span class="icon">📍</span><div><strong>Address</strong><div class="small">B/105 Ratanraj Greens, Nana Chiloda, Ahmedabad</div></div></div>
+        <div class="contact-row"><span class="icon">✉️</span><div><strong>Email</strong><div class="small">hello@yourdomain.com</div></div></div>
+        <div class="contact-row"><span class="icon">📞</span><div><strong>Phone</strong><div class="small">+91 98765 43210</div></div></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    /**
+     * Submits via AJAX JSON to /send-form (recommended),
+     * Fallback: Formspree (uncomment FORMSPREE_URL below and swap).
+     *
+     * - Replace `POST_URL` with your server endpoint that accepts JSON.
+     * - Or follow Formspree instructions: https://formspree.io/
+     */
+
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusText = document.getElementById('status');
+    const formMessage = document.getElementById('formMessage');
+
+    // === CONFIG ===
+    const POST_URL = '/send-form'; // <-- change to your server endpoint
+    // const FORMSPREE_URL = 'https://formspree.io/f/yourFormId'; // <-- alternative (uncomment if using Formspree)
+
+    function showMessage(type, text){
+      formMessage.style.display = 'block';
+      formMessage.className = 'form-message ' + (type === 'ok' ? 'success' : 'error');
+      formMessage.textContent = text;
+    }
+
+    function clearMessage(){
+      formMessage.style.display = 'none';
+      formMessage.textContent = '';
+    }
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      clearMessage();
+      statusText.textContent = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      // basic client-side validation
+      if (!form.reportValidity()) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+        return;
+      }
+
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        subject: form.subject.value.trim(),
+        message: form.message.value.trim(),
+        url: location.href
+      };
+
+      try {
+        // === Option A: send to your server endpoint (expects JSON) ===
+        const res = await fetch(POST_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (!res.ok) {
+          // try to parse message from server
+          const errText = await res.text().catch(()=>null);
+          throw new Error(errText || `Server returned ${res.status}`);
+        }
+
+        showMessage('ok', 'Thanks — your message was sent. We will reply soon.');
+        form.reset();
+        statusText.textContent = 'Done';
+      } catch (err) {
+        // === Option B fallback: Formspree (if you don't have a backend) ===
+        // Uncomment and use the code below instead of the error block if you want quick setup:
+        //
+        // try {
+        //   const fr = await fetch(FORMSPREE_URL, {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(data)
+        //   });
+        //   if (fr.ok) { showMessage('ok','Thanks — sent via Formspree.'); form.reset(); }
+        //   else throw new Error('Formspree error');
+        // } catch(e) { showMessage('err','Could not send the message.'); }
+        //
+        console.error(err);
+        showMessage('err', 'Could not send the message. Please try again later or email hello@yourdomain.com');
+        statusText.textContent = 'Failed';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  </script>
+</body>
+</html>
