@@ -311,10 +311,9 @@
         successMsg.classList.add("success-mess");
 
         // trigger download after 1 second (non-redirect)
-       setTimeout(() => {
+        setTimeout(() => {
   const link = document.createElement("a");
-  link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/unbound-x-Investor-deck.pdf";
-  link.setAttribute("download", "unbound-x-Investor-deck.pdf"); 
+  link.href = "download.php"; // <-- use proxy file instead of S3 direct
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
