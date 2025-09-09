@@ -189,33 +189,43 @@
       <h2>Download our Investor Deck!</h2>
       <p class="lead">Enter your details below</p>
 
+      <!-- General form error (server-side/network) -->
+      <div id="formError" style="display:none; background:#fff0f0; color:#b00020; padding:10px; border-radius:8px; margin-bottom:15px;"></div>
+
       <!-- Success message (hidden by default, shows after submit) -->
       <div id="successMsg" style="display:none; background:#e6ffe6; color:#2e7d32; padding:10px; border-radius:8px; margin-bottom:15px;">
         ✅ Form submitted successfully! Your download will start shortly.
       </div>
 
-      <form id="investorForm">
+      <form id="investorForm" novalidate>
         <div class="field field-hidden">
-          <label for="formfor">Form For Arnav Awasthi</label>
+          <label for="formfor">Investor Deck By Arnav Awasthi</label>
           <input id="formfor" name="formfor" type="text" value="Arnav Awasthi">
         </div>
+
         <div class="field">
           <label for="fullName">Full Name</label>
           <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
         </div>
+
         <div class="field">
           <label for="email">Email Address</label>
           <input id="email" name="email" type="email" placeholder="you@domain.com" required>
         </div>
+
         <div class="field">
           <label for="accessCode">Access Code</label>
           <input id="accessCode" name="accessCode" type="text" placeholder="Enter Code">
+          <!-- Access code specific error -->
+          <div id="accessError" style="display:none; color:#b00020; font-size:0.9rem; margin-top:6px;"></div>
         </div>
-        <button class="submit" type="submit">Submit</button>
+
+        <button id="submitBtn" class="submit" type="submit">Submit</button>
       </form>
     </div>
   </div>
 </div>
+
 
     
     <!-- JavaScript for Modal -->
@@ -245,36 +255,107 @@
     document.getElementById('download-oid').style.display = 'none';
     }
     
-    document.getElementById("investorForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // stop default redirect
+(function(){
+  const EXPECTED_CODE = "UBX20205!";
+  const form = document.getElementById("investorForm");
+  const accessInput = document.getElementById("accessCode");
+  const accessError = document.getElementById("accessError");
+  const formError = document.getElementById("formError");
+  const successMsg = document.getElementById("successMsg");
+  const submitBtn = document.getElementById("submitBtn");
 
-  let formData = new FormData(this);
+  function clearMessages() {
+    accessError.style.display = "none";
+    accessError.textContent = "";
+    formError.style.display = "none";
+    formError.textContent = "";
+  }
 
-  fetch("sendmail.php", {
-    method: "POST",
-    body: formData
-  })
-  .then(response => response.text())
-  .then(data => {
-    // show success message
-    document.getElementById("successMsg").style.display = "block";
-    document.getElementById("successMsg").clasList.add = "successMsg-open";
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    clearMessages();
 
-    setTimeout(() => {
-      let link = document.createElement("a");
-      link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
-      link.download = "UnBound+X+Investor+Deck.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }, 1000);
-  })
-  .catch(error => {
-    alert("Something went wrong. Please try again.");
-    console.error(error);
+    // Client-side access code check
+    const code = (accessInput.value || "").trim();
+    if (code !== EXPECTED_CODE) {
+      accessError.textContent = "Access code is incorrect.";
+      accessError.style.display = "block";
+      accessInput.focus();
+      return; // do not submit
+    }
+
+    // Prevent double-submission
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch("sendmail.php", {
+        method: "POST",
+        body: formData
+      });
+
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        // If not JSON, fallback to raw text
+        data = typeof text === "string" ? text.trim() : { status: "error", message: "Unexpected server response" };
+      }
+
+      // Handle different response shapes (robust)
+      if ((typeof data === "object" && data.status === "success") || data === "success") {
+        // success
+        successMsg.style.display = "block";
+
+        // trigger download after 1 second (non-redirect)
+        setTimeout(() => {
+          const link = document.createElement("a");
+          link.href = "https://detectivestrikal.com/git-server/business-cards/pdf/Pramod-Resume.pdf";
+          link.download = "Pramod-Resume.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          // Optionally close modal here if you want:
+          // close_DOID_Modal();
+        }, 1000);
+      } else {
+        // server returned an error object
+        if (typeof data === "object" && data.field && data.message) {
+          // field specific error (e.g. accessCode)
+          if (data.field === "accessCode") {
+            accessError.textContent = data.message;
+            accessError.style.display = "block";
+            accessInput.focus();
+          } else {
+            // other field — show top-level error
+            formError.textContent = data.message;
+            formError.style.display = "block";
+          }
+        } else if (typeof data === "string" && data.length > 0) {
+          formError.textContent = data;
+          formError.style.display = "block";
+        } else if (typeof data === "object" && data.message) {
+          formError.textContent = data.message;
+          formError.style.display = "block";
+        } else {
+          formError.textContent = "Server error. Please try again later.";
+          formError.style.display = "block";
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      formError.textContent = "Network error. Please try again later.";
+      formError.style.display = "block";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+    }
   });
-});
-    </script>
+})();
+</script>
+
     
    </body>
   </html>
