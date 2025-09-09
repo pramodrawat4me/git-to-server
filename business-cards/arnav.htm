@@ -258,12 +258,12 @@
   .then(data => {
     // show success message
     document.getElementById("successMsg").style.display = "block";
+    document.getElementById("successMsg").clasList.add = "successMsg-open";
 
-    // wait 1 second then trigger file download (not redirect)
     setTimeout(() => {
       let link = document.createElement("a");
-      link.href = "https://detectivestrikal.com/git-server/business-cards/pdf/Pramod-Resume.pdf";
-      link.download = "Pramod-Resume.pdf";
+      link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
+      link.download = "UnBound+X+Investor+Deck.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

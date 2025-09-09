@@ -6,8 +6,12 @@
     <title>Maneesh Awasthi · UnBound X</title>
     <!-- Typography & Layout CSS -->
     <link
-      rel="stylesheet"
-      href="https://business.unboundxinc.com/static/css/style.css"
+   rel="stylesheet"
+   href="css/style.css"
+   />
+   <link
+    rel="stylesheet"
+    href="css/form.css"
     />
   </head>
   <body>
@@ -123,87 +127,156 @@
 
       <!-- Bottom Tab Links -->
       <nav class="card__tabs">
-        
-        <a href="https://unboundx.co" class="tab">
-          <!-- left icon -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/globe.svg"
-            alt=""
-            class="tab__icon"
-          />
-          <!-- label -->
-          <span class="tab__label">Visit our website</span>
-          <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
-        </a>
-        
-        <a href="https://ubverse.unboundx.co" class="tab">
-          <!-- left icon -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/qr-code.svg"
-            alt=""
-            class="tab__icon"
-          />
-          <!-- label -->
-          <span class="tab__label">Visit UBverse</span>
-          <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
-        </a>
-        
-        <a href="https://lu.ma/d03t521y" class="tab">
-          <!-- left icon -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/paper-plane.svg"
-            alt=""
-            class="tab__icon"
-          />
-          <!-- label -->
-          <span class="tab__label">Register for our June 5th event!</span>
-          <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
-        </a>
-        
-      </nav>
+      
+      <a href="https://unboundx.co" class="tab" target="_blank">
+       <!-- left icon -->
+       <img src="https://business.unboundxinc.com/static/icons/globe.svg" alt="" class="tab__icon">
+       <!-- label -->
+       <span class="tab__label">Visit our website</span>
+       <!-- right arrow -->
+       <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+      </a>
+      
+      <a href="https://ubverse.unboundx.co" class="tab" target="_blank">
+       <!-- left icon -->
+       <img src="https://business.unboundxinc.com/static/icons/qr-code.svg" alt="" class="tab__icon">
+       <!-- label -->
+       <span class="tab__label">Visit UBverse</span>
+       <!-- right arrow -->
+       <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+      </a>
+      
+      <a href="javascript:void(0)" class="tab" onclick="open_DOID_Modal()">
+       <!-- left icon -->
+       <img src="images/folder-cloud.svg" alt="" class="tab__icon">
+       <!-- label -->
+       <span class="tab__label">Download our Investor Deck!</span>
+       <!-- right arrow -->
+       <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+      </a>
+      
+      <a href="https://apps.apple.com/us/app/unbound-x/id6745837250" target="_blank" class="tab" >
+       <!-- left icon -->
+       <img src="images/apple.svg" alt="" class="tab__icon">
+       <!-- label -->
+       <span class="tab__label">Download UnBound X via App Store</span>
+       <!-- right arrow -->
+       <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+      </a>
+      
+      <a href="https://play.google.com/store/apps/details?id=com.unboundx" target="_blank" class="tab">
+       <!-- left icon -->
+       <img src="images/google.svg" alt="" class="tab__icon">
+       <!-- label -->
+       <span class="tab__label">Download UnBound X via Google Play</span>
+       <!-- right arrow -->
+       <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+      </a>
+      
+     </nav>
     </div>
 
-    <!-- QR Code Modal -->
+     <!-- QR Code Modal -->
     <div id="qrModal" class="modal">
-      <div class="modal-content">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <img id="qrImage" src="" alt="QR Code" class="modal-image" />
-      </div>
+     <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="qrImage" src="" alt="QR Code" class="modal-image" />
+     </div>
     </div>
+   
+
+   <div id="download-oid" class="modal download-oid">
+  <div class="modal-content">
+    <span class="modal-close" onclick="close_DOID_Modal()">&times;</span>
+    <div class="form-main">
+      <h2>Download our Investor Deck!</h2>
+      <p class="lead">Enter your details below</p>
+
+      <!-- Success message (hidden by default, shows after submit) -->
+      <div id="successMsg" style="display:none; background:#e6ffe6; color:#2e7d32; padding:10px; border-radius:8px; margin-bottom:15px;">
+        ✅ Form submitted successfully! Your download will start shortly.
+      </div>
+
+      <form id="investorForm">
+        <div class="field field-hidden">
+          <label for="formfor">Form For Maneesh Awasthi</label>
+          <input id="formfor" name="formfor" type="text" value="Maneesh Awasthi">
+        </div>
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" placeholder="you@domain.com" required>
+        </div>
+        <div class="field">
+          <label for="accessCode">Access Code</label>
+          <input id="accessCode" name="accessCode" type="text" placeholder="Enter Code">
+        </div>
+        <button class="submit" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
     
-    <!-- JavaScript for Modal -->a
+    <!-- JavaScript for Modal -->
     <script>
-      function openModal(imageUrl) {
-        document.getElementById('qrImage').src = imageUrl;
-        document.getElementById('qrModal').style.display = 'flex';
-      }
+    function openModal(imageUrl) {
+    document.getElementById('qrImage').src = imageUrl;
+    document.getElementById('qrModal').style.display = 'flex';
+    }
     
-      function closeModal() {
-        document.getElementById('qrModal').style.display = 'none';
-      }
+    function closeModal() {
+    document.getElementById('qrModal').style.display = 'none';
+    }
     
-      // Optional: click outside modal to close
-      window.onclick = function (event) {
-        const modal = document.getElementById('qrModal');
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      };
+    // Optional: click outside modal to close
+    window.onclick = function (event) {
+    const modal = document.getElementById('qrModal');
+    if (event.target === modal) {
+    modal.style.display = 'none';
+    }
+    };
+    </script>
+    <script>
+    function open_DOID_Modal() {
+    document.getElementById('download-oid').style.display = 'flex';
+    }
+    function close_DOID_Modal() {
+    document.getElementById('download-oid').style.display = 'none';
+    }
+    
+    document.getElementById("investorForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // stop default redirect
+
+  let formData = new FormData(this);
+
+  fetch("sendmail.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    // show success message
+    document.getElementById("successMsg").style.display = "block";
+    document.getElementById("successMsg").clasList.add = "successMsg-open";
+
+    setTimeout(() => {
+      let link = document.createElement("a");
+      link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
+      link.download = "UnBound+X+Investor+Deck.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }, 1000);
+  })
+  .catch(error => {
+    alert("Something went wrong. Please try again.");
+    console.error(error);
+  });
+});
     </script>
     
     </body>
