@@ -312,8 +312,8 @@
         // trigger download after 1 second (non-redirect)
         setTimeout(() => {
           const link = document.createElement("a");
-          link.href = "https://detectivestrikal.com/git-server/business-cards/pdf/Pramod-Resume.pdf";
-          link.download = "Pramod-Resume.pdf";
+          link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
+          link.download = "UnBound+X+Investor+Deck.pdf";
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
