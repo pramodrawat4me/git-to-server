@@ -10,46 +10,11 @@
       rel="stylesheet"
       href="css/style.css"
     />
-    <style type="text/css">
-    .form-main * , .form-main{box-sizing: border-box;}
-     .download-oid .modal-content {
-        max-width: 600px;
-    } 
-      .form-main{width:100%;padding:10px;}
-       .form-main * {
-font-family: var(--font-inter);
-       }
-  .form-main h2{margin:0 0 6px;font-size:30px; color: #263040}
-  .form-main p.lead{margin:0 0 18px;color:#263040;font-size:18px;}
-  .form-main form{display:grid;gap:22px;}
- .form-main .field{display:flex;flex-direction:column; gap:6px;}
-  .form-main label{font-size:18px;color:#515966; line-height: 1.3;}
-  .form-main input{
-    width:100%;padding:8px 15px;border-radius:10px;border:1px solid #515966;
-    background:#fff;font-size:18px;transition:border .12s,box-shadow .12s; color: #515966;
-    outline: none;
-    box-shadow: none;
-  }
-  .form-main input:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(37,99,235,0.2);}
-  .form-main .submit{
-    background: #263040;
-    border: none;
-    border-radius: 50px;
-    width: 100%;
-    margin: auto;
-    padding: 8px 16px;
-    font-family: var(--font-inter);
-    font-size: clamp(14px, 1.1vw, 22px);
-    font-weight: 500;
-    line-height: normal;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-  }
-.form-main .submit:hover{background: #066BF0;}
-
-
-    </style>
+    <link
+      rel="stylesheet"
+      href="css/form.css"
+    />
+  
   </head>
   <body>
     <div class="card">
@@ -165,71 +130,49 @@ font-family: var(--font-inter);
       <!-- Bottom Tab Links -->
       <nav class="card__tabs">
         
-        <a href="https://unboundx.co" class="tab">
+        <a href="https://unboundx.co" class="tab" target="_blank">
           <!-- left icon -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/globe.svg"
-            alt=""
-            class="tab__icon"
-          />
+          <img src="https://business.unboundxinc.com/static/icons/globe.svg" alt="" class="tab__icon">
           <!-- label -->
           <span class="tab__label">Visit our website</span>
           <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
+          <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
         </a>
         
-        <a href="https://ubverse.unboundx.co" class="tab">
+        <a href="https://ubverse.unboundx.co" class="tab" target="_blank">
           <!-- left icon -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/qr-code.svg"
-            alt=""
-            class="tab__icon"
-          />
+          <img src="https://business.unboundxinc.com/static/icons/qr-code.svg" alt="" class="tab__icon">
           <!-- label -->
           <span class="tab__label">Visit UBverse</span>
           <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
+          <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
         </a>
         
-        <a href="https://lu.ma/d03t521y" class="tab">
-          <!-- left icon -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/paper-plane.svg"
-            alt=""
-            class="tab__icon"
-          />
-          <!-- label -->
-          <span class="tab__label">Register for our June 5th event!</span>
-          <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
-        </a>
         <a href="javascript:void(0)" class="tab" onclick="open_DOID_Modal()">
           <!-- left icon -->
-          <img
-            src="images/download-icon.svg"
-            alt=""
-            class="tab__icon"
-          />
+          <img src="https://business.unboundxinc.com/static/icons/folder-cloud.svg" alt="" class="tab__icon">
           <!-- label -->
-          <span class="tab__label">Download Our Investor Deck!</span>
+          <span class="tab__label">Download our Investor Deck!</span>
           <!-- right arrow -->
-          <img
-            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
-            alt=""
-            class="tab__arrow"
-          />
+          <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+        </a>
+        
+        <a href="https://apps.apple.com/us/app/unbound-x/id6745837250" target="_blank" class="tab" >
+          <!-- left icon -->
+          <img src="https://business.unboundxinc.com/static/icons/apple.svg" alt="" class="tab__icon">
+          <!-- label -->
+          <span class="tab__label">Download UnBound X via App Store</span>
+          <!-- right arrow -->
+          <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
+        </a>
+        
+        <a href="https://play.google.com/store/apps/details?id=com.unboundx" target="_blank" class="tab">
+          <!-- left icon -->
+          <img src="https://business.unboundxinc.com/static/icons/google.svg" alt="" class="tab__icon">
+          <!-- label -->
+          <span class="tab__label">Download UnBound X via Google Play</span>
+          <!-- right arrow -->
+          <img src="https://business.unboundxinc.com/static/icons/chevron-right.svg" alt="" class="tab__arrow">
         </a>
         
       </nav>
@@ -250,24 +193,36 @@ font-family: var(--font-inter);
     <h2>Investor Deck Access Functionality for Conference</h2>
     <p class="lead">Enter your details below</p>
 
-    <form action="sendmail.php" method="post">
-      <div class="field">
-        <label for="fullName">Full Name</label>
-        <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
-      </div>
+    <form id="investorForm">
+  <div class="field field-hidden">
+    <label for="formfor">Form For Arnav Awasthi</label>
+    <input id="formfor" name="formfor" type="text" value="Arnav Awasthi" required>
+  </div>
+  <div class="field">
+    <label for="fullName">Full Name</label>
+    <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
+  </div>
 
-      <div class="field">
-        <label for="email">Email Address</label>
-        <input id="email" name="email" type="email" placeholder="you@domain.com" required>
-      </div>
+  <div class="field">
+    <label for="email">Email Address</label>
+    <input id="email" name="email" type="email" placeholder="you@domain.com" required>
+  </div>
 
-      <div class="field">
-        <label for="accessCode">Access Code</label>
-        <input id="accessCode" name="accessCode" type="text" placeholder="Enter Code">
-      </div>
+  <div class="field">
+    <label for="accessCode">Access Code</label>
+    <input id="accessCode" name="accessCode" type="text" placeholder="Enter Code">
+  </div>
 
-      <button class="submit" type="submit">Submit</button>
-    </form>
+  <button class="submit" type="submit">Submit</button>
+</form>
+
+<!-- Success Message Popup -->
+<div id="successPopup" class="modal" style="display:none;">
+  <div class="modal-content">
+    <p>✅ Form submitted successfully! Your download will start shortly.</p>
+  </div>
+</div>
+
   </div>
       </div>
     </div>
@@ -309,7 +264,39 @@ font-family: var(--font-inter);
           modal.style.display = 'none';
         }
       };
+
+
+
+
+        document.getElementById("investorForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // stop default redirect
+
+  let formData = new FormData(this);
+
+  fetch("sendmail.php", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    // show popup
+    document.getElementById("successPopup").style.display = "flex";
+
+    // wait 1 second then download PDF
+    setTimeout(() => {
+      window.location.href = "https://detectivestrikal.com/git-server/business-cards/pdf/Pramod-Resume.pdf";
+    }, 1000);
+  })
+  .catch(error => {
+    alert("Something went wrong. Please try again.");
+    console.error(error);
+  });
+});
+
+
     </script>
+
+
     
     </body>
     </html>

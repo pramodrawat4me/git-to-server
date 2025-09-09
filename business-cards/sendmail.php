@@ -1,25 +1,18 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name  = htmlspecialchars($_POST['fullName']);
-    $email = htmlspecialchars($_POST['email']);
-    $code  = htmlspecialchars($_POST['accessCode']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name  = $_POST['fullName'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $code  = $_POST['accessCode'] ?? '';
 
-    $to = "pramodrawat4me@gmail.com";  // your email
-    $subject = "New Form Submission";
-    $message = "
-    You have received a new form submission:\n\n
-    Full Name: $name\n
-    Email: $email\n
-    Access Code: $code\n
-    ";
-    $headers = "From: noreply@yourdomain.com\r\n" .
-               "Reply-To: $email\r\n" .
-               "X-Mailer: PHP/" . phpversion();
+    $to = "pramodrawat4me@gmail.com"; // your email
+    $subject = "Investor Deck Request - $name";
+    $message = "Name: $name\nEmail: $email\nAccess Code: $code";
+    $headers = "From: noreply@yourdomain.com";
 
     if (mail($to, $subject, $message, $headers)) {
-        echo "<h2>✅ Thank you, your form has been submitted successfully!</h2>";
+        echo "success";
     } else {
-        echo "<h2>❌ Sorry, something went wrong. Please try again later.</h2>";
+        echo "error";
     }
 }
 ?>
