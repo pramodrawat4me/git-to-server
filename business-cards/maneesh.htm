@@ -189,7 +189,7 @@
   <div class="modal-content">
     <span class="modal-close" onclick="close_DOID_Modal()">&times;</span>
     <div class="form-main">
-      <h2>Download our Investor Deck!</h2>
+      <h2>Download our <span>Investor Deck!</span></h2>
       <p class="lead">Enter your details below</p>
 
       <!-- General form error (server-side/network) -->
@@ -308,13 +308,13 @@
       if ((typeof data === "object" && data.status === "success") || data === "success") {
         // success
         successMsg.style.display = "block";
-        successMsg.classList.add = "success-mess";
+        successMsg.classList.add("success-mess");
 
         // trigger download after 1 second (non-redirect)
-        setTimeout(() => {
+       setTimeout(() => {
   const link = document.createElement("a");
   link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
-  link.setAttribute("download", "UnBoundX-Investor-Deck.pdf"); // force filename
+  link.setAttribute("download", "UnBoundX-Investor-Deck.pdf"); 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
