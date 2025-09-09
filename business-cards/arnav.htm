@@ -186,36 +186,34 @@
   <div class="modal-content">
     <span class="modal-close" onclick="close_DOID_Modal()">&times;</span>
     <div class="form-main">
-      <h2>Download our Investor Deck!</h2>
+      <h2>Download our <span>Investor Deck!</span></h2>
       <p class="lead">Enter your details below</p>
 
       <!-- General form error (server-side/network) -->
       <div id="formError" style="display:none; background:#fff0f0; color:#b00020; padding:10px; border-radius:8px; margin-bottom:15px;"></div>
 
       <!-- Success message (hidden by default, shows after submit) -->
-      <div id="successMsg" style="display:none; background:#e6ffe6; color:#2e7d32; padding:10px; border-radius:8px; margin-bottom:15px;">
-        ✅ Form submitted successfully! Your download will start shortly.
+      <div id="successMsg" style="display:none;">
+         <img src="images/success-checkbox.svg" alt="Success Check Box">
+         <h4>Form submitted successfully!</h4>
+         <p>Your download will start shortly.</p>
       </div>
 
       <form id="investorForm" novalidate>
         <div class="field field-hidden">
-          <label for="formfor">Investor Deck By Arnav Awasthi</label>
           <input id="formfor" name="formfor" type="text" value="Arnav Awasthi">
         </div>
 
         <div class="field">
-          <label for="fullName">Full Name</label>
           <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
         </div>
 
         <div class="field">
-          <label for="email">Email Address</label>
-          <input id="email" name="email" type="email" placeholder="you@domain.com" required>
+          <input id="email" name="email" type="email" placeholder="Email Address" required>
         </div>
 
         <div class="field">
-          <label for="accessCode">Access Code</label>
-          <input id="accessCode" name="accessCode" type="text" placeholder="Enter Code">
+          <input id="accessCode" name="accessCode" type="text" placeholder="Access Code">
           <!-- Access code specific error -->
           <div id="accessError" style="display:none; color:#b00020; font-size:0.9rem; margin-top:6px;"></div>
         </div>
@@ -308,18 +306,17 @@
       if ((typeof data === "object" && data.status === "success") || data === "success") {
         // success
         successMsg.style.display = "block";
+        successMsg.classList.add = "s";
 
         // trigger download after 1 second (non-redirect)
         setTimeout(() => {
-          const link = document.createElement("a");
-          link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
-          link.download = "UnBound+X+Investor+Deck.pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          // Optionally close modal here if you want:
-          // close_DOID_Modal();
-        }, 1000);
+  const link = document.createElement("a");
+  link.href = "https://s3.us-east-1.amazonaws.com/business.unboundxinc.com/UnBound+X+Investor+Deck.pdf";
+  link.setAttribute("download", "UnBoundX-Investor-Deck.pdf"); // force filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}, 1000);
       } else {
         // server returned an error object
         if (typeof data === "object" && data.field && data.message) {
