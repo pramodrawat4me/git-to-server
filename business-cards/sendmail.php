@@ -24,14 +24,14 @@ if ($code !== $EXPECTED_CODE) {
 }
 
 // prepare email
-$to = "pramodrawat4me@gmail.com";
+$to = "pramodrawat4me@gmail.com";  // <-- your receiving email
 $subject = "Investor Deck Request - " . ($name ?: 'No name provided');
 $message = "Form For: $formfor\n";
 $message .= "Name: $name\n";
 $message .= "Email: $email\n";
 $message .= "Access Code: $code\n";
 
-$from = "notification@unboundxinc.com"; // <-- Replace with a real email address on your domain
+$from = "notification@unboundxinc.com"; // must be a valid sender domain email
 $headers = "From: " . $from . "\r\n";
 $headers .= "Reply-To: " . (filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : $from) . "\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
@@ -42,7 +42,6 @@ $sent = mail($to, $subject, $message, $headers);
 if ($sent) {
     echo json_encode(['status' => 'success']);
 } else {
-    // don't expose internal details to the client
     echo json_encode(['status' => 'error', 'message' => 'Failed to send email.']);
 }
 ?>
