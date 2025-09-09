@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arnav Awasthi · UnBound X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Typography & Layout CSS -->
+    <link
+      rel="stylesheet"
+      href="css/style.css"
+    />
+    <style type="text/css">
+    .form-main * , .form-main{box-sizing: border-box;}
+     .download-oid .modal-content {
+        max-width: 600px;
+    } 
+      .form-main{width:100%;padding:10px;}
+       .form-main * {
+font-family: var(--font-inter);
+       }
+  .form-main h2{margin:0 0 6px;font-size:30px; color: #263040}
+  .form-main p.lead{margin:0 0 18px;color:#263040;font-size:18px;}
+  .form-main form{display:grid;gap:22px;}
+ .form-main .field{display:flex;flex-direction:column; gap:6px;}
+  .form-main label{font-size:18px;color:#515966; line-height: 1.3;}
+  .form-main input{
+    width:100%;padding:8px 15px;border-radius:10px;border:1px solid #515966;
+    background:#fff;font-size:18px;transition:border .12s,box-shadow .12s; color: #515966;
+    outline: none;
+    box-shadow: none;
+  }
+  .form-main input:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(37,99,235,0.2);}
+  .form-main .submit{
+    background: #263040;
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    margin: auto;
+    padding: 8px 16px;
+    font-family: var(--font-inter);
+    font-size: clamp(14px, 1.1vw, 22px);
+    font-weight: 500;
+    line-height: normal;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+  }
+.form-main .submit:hover{background: #066BF0;}
+
+
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <!-- Top Frame (behind profile) -->
+      <div class="card__frame">
+        <!-- chat bubble in upper-left -->
+        <img
+          src="https://business.unboundxinc.com/static/images/chat-bubble.png"
+          alt=""
+          class="frame__chat"
+        />
+    
+        <!-- mini avatar bottom-left -->
+        <img
+          src="https://business.unboundxinc.com/static/images/mini-avatar-1.png"
+          alt=""
+          class="frame__mini frame__mini--1"
+        />
+    
+        <!-- mini avatar upper-right -->
+        <img
+          src="https://business.unboundxinc.com/static/images/mini-avatar-2.png"
+          alt=""
+          class="frame__mini frame__mini--2"
+        />
+    
+        <!-- coin in bottom-right -->
+        <img
+          src="https://business.unboundxinc.com/static/images/coin.png"
+          alt=""
+          class="frame__coin"
+        />
+      </div>
+
+      <!-- Profile Section -->
+      <div class="card__profile">
+        <img
+          src="https://business.unboundxinc.com/static/images/Arnav.png"
+          alt="Arnav Awasthi"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h1>Arnav Awasthi</h1>
+          <h2>COO &amp; Co-founder at UnBound X</h2>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="card__social-links">
+        
+          
+            <!-- Normal social links -->
+            <a href="https://www.linkedin.com/in/arnavunbound/" class="social-link linkedin">
+              <img
+                src="https://business.unboundxinc.com/static/icons/linkedin.svg"
+                alt="linkedin"
+                class="social-link__img"
+              />
+            </a>
+            
+        
+          
+            <!-- Normal social links -->
+            <a href="mailto:arnav@unboundxinc.com" class="social-link email">
+              <img
+                src="https://business.unboundxinc.com/static/icons/email.svg"
+                alt="email"
+                class="social-link__img"
+              />
+            </a>
+            
+        
+          
+            <!-- Normal social links -->
+            <a href="https://instagram.com/unboundxapp" class="social-link instagram">
+              <img
+                src="https://business.unboundxinc.com/static/icons/instagram.svg"
+                alt="instagram"
+                class="social-link__img"
+              />
+            </a>
+            
+        
+          
+            <!-- Normal social links -->
+            <a href="https://x.com/unboundxapp" class="social-link x">
+              <img
+                src="https://business.unboundxinc.com/static/icons/x.svg"
+                alt="x"
+                class="social-link__img"
+              />
+            </a>
+            
+        
+          
+            <!-- Special case: QR icon opens modal -->
+            <a href="#" class="social-link qr" onclick="openModal('https://business.unboundxinc.com/qr/arnav.svg'); return false;">
+              <img
+                src="https://business.unboundxinc.com/static/icons/qr.svg"
+                alt="QR Code"
+                class="social-link__img"
+              />
+            </a>
+            
+        
+      </div>
+
+      <!-- Add to Contacts Button -->
+      <a href="https://business.unboundxinc.com/static/vcards/arnav.vcf" download>
+        <button class="card__add-contact">+ Add to Contacts</button>
+      </a>
+
+      <!-- Bottom Tab Links -->
+      <nav class="card__tabs">
+        
+        <a href="https://unboundx.co" class="tab">
+          <!-- left icon -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/globe.svg"
+            alt=""
+            class="tab__icon"
+          />
+          <!-- label -->
+          <span class="tab__label">Visit our website</span>
+          <!-- right arrow -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
+            alt=""
+            class="tab__arrow"
+          />
+        </a>
+        
+        <a href="https://ubverse.unboundx.co" class="tab">
+          <!-- left icon -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/qr-code.svg"
+            alt=""
+            class="tab__icon"
+          />
+          <!-- label -->
+          <span class="tab__label">Visit UBverse</span>
+          <!-- right arrow -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
+            alt=""
+            class="tab__arrow"
+          />
+        </a>
+        
+        <a href="https://lu.ma/d03t521y" class="tab">
+          <!-- left icon -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/paper-plane.svg"
+            alt=""
+            class="tab__icon"
+          />
+          <!-- label -->
+          <span class="tab__label">Register for our June 5th event!</span>
+          <!-- right arrow -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
+            alt=""
+            class="tab__arrow"
+          />
+        </a>
+        <a href="javascript:void(0)" class="tab" onclick="open_DOID_Modal()">
+          <!-- left icon -->
+          <img
+            src="images/download-icon.svg"
+            alt=""
+            class="tab__icon"
+          />
+          <!-- label -->
+          <span class="tab__label">Download Our Investor Deck!</span>
+          <!-- right arrow -->
+          <img
+            src="https://business.unboundxinc.com/static/icons/chevron-right.svg"
+            alt=""
+            class="tab__arrow"
+          />
+        </a>
+        
+      </nav>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="qrImage" src="" alt="QR Code" class="modal-image" />
+      </div>
+    </div>
+
+     <div id="download-oid" class="modal download-oid">
+      <div class="modal-content">
+        <span class="modal-close" onclick="close_DOID_Modal()">&times;</span>
+        <div class="form-main">
+    <h2>Investor Deck Access Functionality for Conference</h2>
+    <p class="lead">Enter your details below</p>
+
+    <form action="sendmail.php" method="post">
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" name="fullName" type="text" placeholder="Full Name" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" placeholder="you@domain.com" required>
+      </div>
+
+      <div class="field">
+        <label for="accessCode">Access Code</label>
+        <input id="accessCode" name="accessCode" type="text" placeholder="Enter Code">
+      </div>
+
+      <button class="submit" type="submit">Submit</button>
+    </form>
+  </div>
+      </div>
+    </div>
+    
+    <!-- JavaScript for Modal -->
+    <script>
+      function openModal(imageUrl) {
+        document.getElementById('qrImage').src = imageUrl;
+        document.getElementById('qrModal').style.display = 'flex';
+      }
+    
+      function closeModal() {
+        document.getElementById('qrModal').style.display = 'none';
+      }
+    
+      // Optional: click outside modal to close
+      window.onclick = function (event) {
+        const modal = document.getElementById('qrModal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      };
+    </script>
+
+    <script>
+      function open_DOID_Modal() {
+        document.getElementById('download-oid').style.display = 'flex';
+      }
+
+      function close_DOID_Modal() {
+        document.getElementById('download-oid').style.display = 'none';
+      }
+    
+      
+      // Optional: click outside modal to close
+      window.onclick = function (event) {
+        const modal = document.getElementById('qrModal');
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      };
+    </script>
+    
+    </body>
+    </html>
